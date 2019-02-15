@@ -39,7 +39,7 @@
 
                 <div class="dropdown">
                         <strong> Agree Or DisAgree</strong>
-                    <select class=" drop1 btn btn-primary dropdown-toggle" type="option" data-toggle="dropdown">
+                    <select id="drop1" class= " btn btn-primary dropdown-toggle" type="option" data-toggle="dropdown">
                         <option>5</option>
                         <option>4</option>
                         <option>3</option>
@@ -54,7 +54,7 @@
                 <p><span id="singer3"></span> is better than <span id="singer4"></span> </p>
    <div class="dropdown">
         <strong> Agree Or DisAgree</strong>     
-        <select class=" drop2 btn btn-primary dropdown-toggle" type="option" data-toggle="dropdown">
+        <select id="drop2" class="  btn btn-primary dropdown-toggle" type="option" data-toggle="dropdown">
                 <option>5</option>
                 <option>4</option>
                 <option>3</option>
@@ -70,7 +70,7 @@
                 <p><span id="singer5"></span> is better than <span id="singer6"></span> </p>
                 <div class="dropdown">
                         <strong> Agree Or DisAgree</strong>
-                        <select class=" drop3 btn btn-primary dropdown-toggle" type="option" data-toggle="dropdown">
+                        <select id="drop3" class="  btn btn-primary dropdown-toggle" type="option" data-toggle="dropdown">
                                 <option>5</option>
                                 <option>4</option>
                                 <option>3</option>
@@ -87,7 +87,7 @@
 
                 <div class="dropdown">
                    <strong> Agree Or DisAgree</strong>
-                        <select class=" drop4 btn btn-primary dropdown-toggle" type="option" data-toggle="dropdown"> 
+                        <select id="drop4" class="  btn btn-primary dropdown-toggle" type="option" data-toggle="dropdown"> 
                                 <option>5</option>
                                 <option>4</option>
                                 <option>3</option>
@@ -104,7 +104,7 @@
 
                 <div class="dropdown">
                         <strong> Agree Or DisAgree</strong>
-                        <select class=" drop5 btn btn-primary dropdown-toggle" type="option" data-toggle="dropdown">
+                        <select id="drop5" class="  btn btn-primary dropdown-toggle" type="option" data-toggle="dropdown">
                                 <option>5</option>
                                 <option>4</option>
                                 <option>3</option>
@@ -153,7 +153,7 @@
 </div>
 
 <footer>
-        <a href="/api/tables">API Table Link</a>
+        <a href="/api/survey">API Survey Link</a>
         |
         <a href="">API Wait List</a>
     </footer>
@@ -189,7 +189,6 @@
         "Lauryn Hill",
         "Redman",
         "Method Man"]
-
     var names5 = [
         "Eminem",
         "Kanye West",
@@ -235,81 +234,52 @@
         "Future",
         "Migos",
         "Nikki Minaj"]
-
-
     for (var i = 0; i < names1.length; i++) {
         var selnames1 = names1[Math.floor(Math.random() * names1.length)]
         $("#singer1").text(selnames1)
     }
     for (var i = 0; i < names2.length; i++) {
-
         var selnames2 = names2[Math.floor(Math.random() * names2.length)]
-
-
         $("#singer2").text(selnames2)
-
     }
     for (var i = 0; i < names3.length; i++) {
         var selnames3 = names3[Math.floor(Math.random() * names3.length)]
         $("#singer3").text(selnames3)
     }
     for (var i = 0; i < names4.length; i++) {
-
         var selnames4 = names4[Math.floor(Math.random() * names4.length)]
-
-
         $("#singer4").text(selnames4)
-
     }
     for (var i = 0; i < names5.length; i++) {
         var selnames5 = names5[Math.floor(Math.random() * names5.length)]
         $("#singer5").text(selnames5)
     }
     for (var i = 0; i < names6.length; i++) {
-
         var selnames6 = names6[Math.floor(Math.random() * names6.length)]
-
-
         $("#singer6").text(selnames6)
-
     }
-
     for (var i = 0; i < names7.length; i++) {
         var selnames7 = names7[Math.floor(Math.random() * names7.length)]
         $("#singer7").text(selnames7)
     }
     for (var i = 0; i < names8.length; i++) {
-
         var selnames8 = names8[Math.floor(Math.random() * names8.length)]
-
-
         $("#singer8").text(selnames8)
-
     }
     for (var i = 0; i < names9.length; i++) {
         var selnames9 = names9[Math.floor(Math.random() * names9.length)]
         $("#singer9").text(selnames9)
     }
     for (var i = 0; i < names8.length; i++) {
-
         var selnames10 = names10[Math.floor(Math.random() * names10.length)]
-
-
         $("#singer10").text(selnames10)
-
     }
-
-
-
     $(".submit").on("click", function (e) {
-
         e.preventDefault();
-
-
         var userInput = {
             name: $("#name").val().trim(),
             // photo: $("#input"),
-            points:( Number($(".drop1").val())+ Number($(".drop2").val())+ Number($(".drop3").val())+Number($(".drop3").val())+Number($(".drop3").val()))
+            points:(Number($("#drop1").val())+ Number($("#drop2").val())+ Number($("#drop3").val())+Number($("#drop4").val())+Number($("#drop5").val()))
            
         }
         console.log(userInput)  
@@ -317,16 +287,13 @@
         .then(function(data) {
           console.log("/survey.html", data);
           alert("Adding your User...");
-
-
           
         });
 
 
+      
         $.get("/api/survey", function(data) {
     console.log(data);
-
-
     
         var div = $("<div></div>");
         var p = "<p>---------------------</p>";
@@ -334,17 +301,11 @@
         
         // var photo = $("<p><strong>Photo:</strong> " + data[i].photo + "</p>")
         var points = $("<p><strong>Points:</strong> " + data.points+ "</p>")
-
-
         div.append( name,points, p)
-
       $(".modal-body").append(div);
     
-
-
-  });
-
+   });}
         
-
-    })
+   )
 </script>
+
